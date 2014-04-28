@@ -1,15 +1,28 @@
-## Put comments here that give an overall description of what your
-## functions do
 
-## Write a short comment describing this function
+## first function creates an object with 2 values
 
 makeCacheMatrix <- function(x = matrix()) {
+  inv<- NULL
+  
+  setinv <- function(invertedMatrix) inv<<-invertedMatrix
+    
+  getinv <- function() inv
+  list(setinv=setinv, getinv=getinv)
 
 }
 
 
-## Write a short comment describing this function
+## second function checks if a cached inv matrix exists
+## if it doesn't, it computs it and saves it for next use
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  i<-x$getinv()                #saves value of getinv into i
+  if (inv(!is.null(i))){       #if inv has already been computed, return it
+    return(i)
+  }
+  else {              #if inv hasn't yet been computed, 
+    invx<-solve(x)    #compute it and save it into invx 
+    x$setinv <-invx   #save this value into inv through setinv function
+    invx              #then return the inverted matrix
+  }     
 }
