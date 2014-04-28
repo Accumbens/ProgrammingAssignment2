@@ -1,3 +1,5 @@
+## makeCacheMatrix creates an invertable object
+##cacheSolve computes the inverse or takes it from cache
 
 ## first function creates an object with 2 values
 
